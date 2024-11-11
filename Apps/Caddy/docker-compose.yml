@@ -1,0 +1,35 @@
+name: caddy
+services:
+  app:
+    image: caddy:2.9
+    restart: unless-stopped
+    ports:
+      - target: 80
+        published: 80
+        protocol: tcp
+      - target: 443
+        published: 443
+        protocol: tcp
+      - target: 2019
+        published: 2019
+        protocol: tcp
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+x-casaos:
+  architectures:
+    - amd64
+    - arm
+    - arm64
+  main: app
+  description:
+    en_us: Caddy - The Ultimate Server with Automatic HTTPS.
+  tagline:
+    en_us: Caddy - The Ultimate Server With Automatic Https.
+  developer: ''
+  author: hhhug000
+  icon: https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/caddy.png
+  thumbnail: https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/caddy.png
+  title:
+    en_us: Caddy
+  category: casaos-apps
+  port_map: '80'
